@@ -3,538 +3,1129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aliança Reinante - O Brasil Está em Colapso</title>
+    <title>Mentoria IA Profit - Sistema de Lucro Online com IA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Reset e configurações básicas - Estilo Pablo */
+        /* Reset e estilos base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
         }
-
+        
         :root {
-            --primary: #B8860B;
-            --secondary: #8B0000;
-            --dark: #0A0A0A;
-            --darker: #000000;
-            --light: #FFFFFF;
-            --accent: #FFD700;
-            --text: #F5F5F5;
+            --primary: #6C63FF;
+            --primary-dark: #5A52D5;
+            --accent: #00D4FF;
+            --dark: #0F0F14;
+            --darker: #09090C;
+            --light: #F5F5F7;
+            --text: #E4E4E6;
+            --text-light: #A0A0A5;
+            --card-bg: #1A1A23;
+            --border: #2A2A35;
         }
-
+        
         body {
-            background: var(--dark);
+            background-color: var(--darker);
             color: var(--text);
-            overflow-x: hidden;
             line-height: 1.6;
+            overflow-x: hidden;
         }
-
-        /* Container principal */
+        
         .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
-
-        /* Header/Hero - Estilo Impactante */
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+            font-size: 1rem;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 20px rgba(108, 99, 255, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(108, 99, 255, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary);
+        }
+        
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+        }
+        
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+        
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .highlight {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        /* Header */
         header {
-            min-height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23000000" width="1200" height="800"/><path fill="%238B0000" fill-opacity="0.1" d="M0,0L1200,800H0Z"/></svg>');
+            background-color: rgba(15, 15, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
             display: flex;
             align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--light);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 160px;
+            background: radial-gradient(ellipse at top, var(--dark) 0%, var(--darker) 70%);
             position: relative;
             overflow: hidden;
         }
-
-        .hero-content {
-            text-align: center;
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%231a1a23" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             position: relative;
+            z-index: 1;
+        }
+        
+        .hero-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .hero-subtitle {
+            display: inline-block;
+            background: rgba(108, 99, 255, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(108, 99, 255, 0.2);
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-badge {
+            position: absolute;
+            top: -10px;
+            right: 0;
+            background: var(--accent);
+            color: var(--darker);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
             z-index: 2;
         }
-
-        .alert-badge {
-            display: inline-block;
-            background: var(--secondary);
-            color: var(--light);
-            padding: 10px 25px;
-            border-radius: 30px;
-            font-weight: 800;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 2px solid var(--primary);
+        
+        .hero-image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--card-bg), var(--dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
         }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 30px;
-            text-transform: uppercase;
+        
+        .hero-image-placeholder:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(108, 99, 255, 0.1), transparent);
         }
-
-        .hero-title span {
-            color: var(--primary);
-            text-shadow: 0 0 10px rgba(184, 134, 11, 0.5);
+        
+        .hero-buttons {
+            margin-top: 40px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
         }
-
-        .hero-subtitle {
-            font-size: 1.8rem;
-            margin-bottom: 40px;
-            font-weight: 600;
+        
+        /* Garantia */
+        .guarantee {
+            background-color: var(--card-bg);
+            text-align: center;
+            padding: 40px;
+            border-radius: 12px;
+            margin-top: 60px;
+            border: 1px solid var(--border);
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
-
-        .highlight-text {
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 800;
+        
+        .guarantee-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
         }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            color: var(--dark);
-            text-decoration: none;
-            padding: 20px 50px;
-            border-radius: 50px;
-            font-weight: 900;
-            font-size: 1.3rem;
-            text-transform: uppercase;
-            margin: 20px 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(184, 134, 11, 0.3);
-            border: 3px solid transparent;
+        
+        /* Problema Section */
+        .problem {
+            background-color: var(--dark);
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .problem-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, border-color 0.3s;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+        
+        .problem-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        /* Solução Section */
+        .solution-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px 30px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(184, 134, 11, 0.5);
-            border-color: var(--light);
-        }
-
-        .button-icon {
-            margin-right: 10px;
-        }
-
-        /* Seção Quem Somos */
-        .about {
-            padding: 100px 0;
-            background: var(--darker);
-            position: relative;
-        }
-
-        .about:before {
+        
+        .feature-card:before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
+            background: linear-gradient(90deg, var(--primary), var(--accent));
         }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.8rem;
-            font-weight: 900;
-            margin-bottom: 60px;
-            text-transform: uppercase;
-            position: relative;
-        }
-
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-        }
-
-        .about-text p {
-            margin-bottom: 25px;
-        }
-
-        .about-image {
-            position: relative;
-            text-align: center;
-        }
-
-        .mentor-photo {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 10px;
-            border: 5px solid var(--primary);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Seção Obrigatório */
-        .mandatory {
-            padding: 100px 0;
-            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.95)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23000000" width="1200" height="800"/><path fill="%23B8860B" fill-opacity="0.05" d="M0,400C300,200,600,600,1200,400L1200,800L0,800Z"/></svg>');
-        }
-
-        .mandatory-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .mandatory-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 40px 30px;
-            border-radius: 10px;
-            text-align: center;
-            border-left: 5px solid var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .mandatory-item:hover {
+        
+        .feature-card:hover {
             transform: translateY(-10px);
-            background: rgba(184, 134, 11, 0.1);
         }
-
-        .mandatory-icon {
+        
+        .feature-icon {
             font-size: 3rem;
             margin-bottom: 20px;
             color: var(--primary);
         }
-
-        .mandatory-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--accent);
+        
+        /* Como Funciona */
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 50px;
         }
-
-        /* Seção Método */
-        .method {
-            padding: 100px 0;
-            background: var(--darker);
-        }
-
-        .method-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
+        
         .step {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 40px 30px;
-            border-radius: 10px;
+            flex: 1;
+            min-width: 250px;
             text-align: center;
+            padding: 0 20px;
+            margin-bottom: 30px;
             position: relative;
-            border-top: 5px solid var(--primary);
         }
-
-        .step-number {
+        
+        .step:not(:last-child):after {
+            content: '';
             position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            color: var(--dark);
+            top: 30px;
+            right: -10px;
+            width: 40px;
+            height: 2px;
+            background: var(--border);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 900;
             font-size: 1.5rem;
-            border: 3px solid var(--accent);
+            font-weight: bold;
+            margin: 0 auto 20px;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
         }
-
-        /* Seção Transformação */
-        .transformation {
-            padding: 100px 0;
-            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.95)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23000000" width="1200" height="800"/><path fill="%238B0000" fill-opacity="0.08" d="M0,100C400,0,800,200,1200,100L1200,800L0,800Z"/></svg>');
+        
+        /* Resultados */
+        .results {
+            background-color: var(--dark);
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .result-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+        
+        .result-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        /* Mentor */
+        .mentor {
+            background: radial-gradient(ellipse at bottom, var(--dark) 0%, var(--darker) 70%);
+        }
+        
+        .mentor-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .mentor-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .mentor-image {
+            flex: 1;
             text-align: center;
         }
-
-        .transformation-content {
-            max-width: 800px;
+        
+        .mentor-image-placeholder {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--card-bg), var(--dark));
             margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
         }
-
-        .transformation h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: var(--accent);
+        
+        .mentor-image-placeholder:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(108, 99, 255, 0.1), transparent);
         }
-
-        .transformation p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
+        
+        .mentor-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
         }
-
-        /* Seção Garantia */
-        .guarantee {
-            padding: 80px 0;
-            background: var(--darker);
+        
+        .mentor-stat {
             text-align: center;
-            border-top: 3px solid var(--primary);
         }
-
-        .guarantee-content {
-            max-width: 700px;
-            margin: 0 auto;
-            background: rgba(184, 134, 11, 0.1);
-            padding: 40px;
-            border-radius: 15px;
-            border: 2px solid var(--primary);
+        
+        .mentor-stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
         }
-
-        .guarantee-icon {
-            font-size: 4rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-
-        /* Footer */
-        footer {
-            background: #000000;
-            padding: 50px 0;
+        
+        /* Investimento */
+        .pricing-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             text-align: center;
-            border-top: 2px solid var(--primary);
-        }
-
-        .footer-content {
+            position: relative;
             max-width: 600px;
             margin: 0 auto;
+            border: 1px solid var(--border);
+            overflow: hidden;
         }
-
-        .footer-logo {
-            font-size: 2rem;
-            font-weight: 900;
+        
+        .pricing-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .price {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--light);
+            margin: 20px 0;
+        }
+        
+        .price-period {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 40px 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .check-icon {
+            color: var(--accent);
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .bonus {
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: left;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+        
+        .bonus h4 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Garantia */
+        .money-back {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(108, 99, 255, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* FAQ */
+        .faq-item {
             margin-bottom: 20px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            background-color: var(--card-bg);
+            transition: border-color 0.3s;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--primary);
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            color: var(--light);
+        }
+        
+        .faq-answer {
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        /* CTA Final */
+        .cta-final {
+            background: radial-gradient(ellipse at top, var(--dark) 0%, var(--darker) 70%);
+            text-align: center;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-final:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%231a1a23" points="0,0 1000,1000 0,1000"/></svg>');
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .cta-final .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-final h2 {
+            color: var(--light);
+        }
+        
+        .cta-final p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            padding: 80px 0 30px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: var(--light);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
             color: var(--primary);
         }
-
-        /* Responsividade */
-        @media (max-width: 968px) {
-            .about-content {
-                grid-template-columns: 1fr;
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text);
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-content, .mentor-content {
+                flex-direction: column;
+            }
+            
+            .hero-text, .mentor-text {
+                padding-right: 0;
+                margin-bottom: 50px;
                 text-align: center;
             }
             
-            .hero-title {
-                font-size: 2.8rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.5rem;
+            .step:not(:last-child):after {
+                display: none;
             }
         }
-
+        
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.2rem;
+            .nav-links {
+                display: none;
             }
             
-            .hero-subtitle {
-                font-size: 1.2rem;
+            .mobile-menu {
+                display: block;
             }
             
-            .section-title {
-                font-size: 2.2rem;
+            .hero {
+                padding-top: 130px;
             }
             
-            .cta-button {
-                padding: 15px 30px;
-                font-size: 1.1rem;
+            section {
+                padding: 80px 0;
+            }
+            
+            .steps {
+                flex-direction: column;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .mentor-stats {
+                justify-content: center;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header/Hero Section -->
+    <!-- Header -->
     <header>
         <div class="container">
-            <div class="hero-content">
-                <div class="alert-badge">ALERTA MÁXIMO</div>
-                <h1 class="hero-title">O BRASIL ESTÁ ENTRANDO EM <span>COLAPSO</span></h1>
-                <h2 class="hero-subtitle">E quem não fizer parte da <span class="highlight-text">NOVA ALIANÇA</span> vai ser engolido</h2>
-                
-                <p style="font-size: 1.3rem; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                    Não somos poucos, só estávamos separados...<br>
-                    Gente como você, com fome de mudança. Mentores que já chegaram onde você quer chegar. 
-                    E uma tropa que te levanta quando o mundo tenta te derrubar.
-                </p>
-                
-                <p style="font-size: 1.5rem; font-weight: 700; margin-bottom: 40px; color: var(--accent);">
-                    Na Aliança, você nunca mais anda sozinho.
-                </p>
-                
-                <a href="#cta" class="cta-button">
-                    <i class="fas fa-handshake button-icon"></i>
-                    QUERO SER PARTE DA ALIANÇA 💬
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-brain logo-icon"></i>
+                    IA Profit
                 </a>
-            </div>
+                <ul class="nav-links">
+                    <li><a href="#problema">O Problema</a></li>
+                    <li><a href="#solucao">A Solução</a></li>
+                    <li><a href="#resultados">Resultados</a></li>
+                    <li><a href="#mentor">O Mentor</a></li>
+                    <li><a href="#investimento">Investimento</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
         </div>
     </header>
 
-    <!-- Seção Quem Somos -->
-    <section class="about">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <h2 class="section-title">QUEM É A ALIANÇA REINANTE?</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        A <span class="highlight-text">Aliança Reinante</span> não é um grupo comum. Somos a reunião dos 
-                        <strong>vencedores</strong> que decidiram quebrar as correntes do sistema e construir 
-                        seu próprio império.
-                    </p>
-                    <p>
-                        Enquanto a maioria se contenta com migalhas, nós construímos <strong>fortunas</strong>. 
-                        Enquanto reclamam da crise, nós criamos <strong>oportunidades</strong>.
-                    </p>
-                    <p>
-                        Aqui dentro, você encontra <strong>mentores reais</strong> que já passaram por onde 
-                        você está e chegaram onde você quer chegar. Pessoas que falam a mesma língua 
-                        e compartilham o mesmo <strong>sangue nos olhos</strong>.
-                    </p>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-subtitle">
+                        <i class="fas fa-rocket"></i> MENTORIA EXCLUSIVA
+                    </div>
+                    <h1>Domine o Sistema de Lucro Onlinecom IA e Tráfego Pago</h1>
+                    <p>Aprenda o método passo a passo para criar um negócio digital lucrativo, mesmo que você não queira aparecer e não tenha experiência anterior.</p>
+                    <div class="hero-buttons">
+                        <a href="#investimento" class="btn btn-primary btn-large">
+                            <i class="fas fa-arrow-right"></i> Quero Me Inscrever Agora
+                        </a>
+                        <a href="#solucao" class="btn btn-outline">
+                            <i class="fas fa-play-circle"></i> Ver Método
+                        </a>
+                    </div>
                 </div>
-                <div class="about-image">
-                    <!-- Substitua pela sua foto -->
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Líder da Aliança" class="mentor-photo">
+                <div class="hero-image">
+                    <div class="hero-badge">
+                        <i class="fas fa-bolt"></i> VAGAS LIMITADAS
+                    </div>
+                    <div class="hero-image-placeholder">
+                        <!-- Substitua por uma imagem real -->
+                        <div>
+                            <i class="fas fa-chart-line" style="font-size: 3rem; margin-bottom: 15px; color: var(--primary);"></i>
+                            <div>Dashboard de Resultados</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Seção Obrigatório -->
-    <section class="mandatory">
-        <div class="container">
-            <h2 class="section-title">A ALIANÇA REINANTE É OBRIGATÓRIA SE VOCÊ...</h2>
-            <div class="mandatory-grid">
-                <div class="mandatory-item">
-                    <div class="mandatory-icon">
-                        <i class="fas fa-skull-crossbones"></i>
-                    </div>
-                    <h3>CANSOU DE SER MEDÍOCRE</h3>
-                    <p>Está farto de ver outros conquistando enquanto você fica pra trás</p>
-                </div>
-                <div class="mandatory-item">
-                    <div class="mandatory-icon">
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
-                    <h3>QUER RESULTADOS REAIS</h3>
-                    <p>Não aceita mais promessas vazias, quer ver dinheiro na conta</p>
-                </div>
-                <div class="mandatory-item">
-                    <div class="mandatory-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <h3>NASCEU PARA REINAR</h3>
-                    <p>Sabe que merece mais e está disposto a lutar pela sua coroa</p>
-                </div>
-                <div class="mandatory-item">
-                    <div class="mandatory-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>ENTENDE O PODER DA TROPA</h3>
-                    <p>Sabe que sozinho você é forte, mas junto somos invencíveis</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção Método -->
-    <section class="method">
-        <div class="container">
-            <h2 class="section-title">COMO A ALIANÇA VAI TE ELEVAR</h2>
-            <div class="method-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>INICIAÇÃO</h3>
-                    <p>Quebra dos paradigmas que te mantêm na mediocridade</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>ESTRATÉGIA</h3>
-                    <p>Plano de ataque personalizado para sua conquista</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>EXECUÇÃO</h3>
-                    <p>Mão na massa com suporte da tropa 24/7</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>REINADO</h3>
-                    <p>Colheita dos resultados e manutenção do império</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção Transformação -->
-    <section class="transformation">
-        <div class="container">
-            <div class="transformation-content">
-                <h2>ANTES VOCÊ ERA MAIS UM</h2>
-                <p>Mais um na fila, mais um no trânsito, mais um na planilha...</p>
-                
-                <h2 style="margin: 50px 0 20px; color: var(--primary);">AGORA VOCÊ É ALIANÇA</h2>
-                <p>Dono do seu tempo, dono do seu negócio, dono da sua vida</p>
-                
-                <p style="font-size: 1.5rem; font-weight: 700; margin: 40px 0; color: var(--accent);">
-                    A escolha é simples: continuar sendo engolido ou se juntar aos que reinam
-                </p>
-                
-                <a href="#cta" class="cta-button" id="cta">
-                    <i class="fas fa-crown button-icon"></i>
-                    ENTRAR PARA A ALIANÇA AGORA
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção Garantia -->
-    <section class="guarantee">
-        <div class="container">
-            <div class="guarantee-content">
+            
+            <div class="guarantee">
                 <div class="guarantee-icon">
                     <i class="fas fa-shield-alt"></i>
                 </div>
-                <h2 style="color: var(--accent); margin-bottom: 20px;">GARANTIA INCONDICIONAL</h2>
-                <p style="font-size: 1.2rem;">
-                    Se em 7 dias você não sentir que a Aliança é o seu lugar,<br>
-                    <strong>devolvemos 100% do seu investimento</strong> sem questionar.
-                </p>
-                <p style="font-size: 1.1rem; margin-top: 20px; font-style: italic;">
-                    O risco é nosso, a conquista é sua.
-                </p>
+                <h3>Garantia Incondicional de 7 Dias</h3>
+                <p>Se você aplicar o método e não ver resultados, devolvemos 100% do seu investimento sem burocracia.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Problema -->
+    <section id="problema" class="problem">
+        <div class="container">
+            <h2>Você Se Identifica Com Algum Desses Problemas?</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <h3>Falta de Conhecimento Técnico</h3>
+                    <p>Não sabe como usar ferramentas de IA ou configurar campanhas de tráfego pago que convertem.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h3>Medo de Se Expor</h3>
+                    <p>Não quer aparecer em vídeos ou redes sociais, mas acha que é obrigatório para ter sucesso online.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Falta de Tempo</h3>
+                    <p>Tem um trabalho ou compromissos e não pode dedicar horas intermináveis a um novo negócio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solução -->
+    <section id="solucao">
+        <div class="container">
+            <h2>A Solução: Mentoria <span class="highlight">IA Profit</span></h2>
+            <p class="text-center">Um sistema completo e comprovado para criar um negócio online lucrativo usando inteligência artificial e tráfego pago estratégico.</p>
+            
+            <div class="solution-features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Ferramentas de IA Exclusivas</h3>
+                    <p>Acesso a ferramentas de inteligência artificial que automatizam a criação de conteúdo e gestão de campanhas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Tráfego Pago que Converte</h3>
+                    <p>Estratégias de tráfego pago testadas e validadas que geram resultados rápidos e consistentes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-ninja"></i>
+                    </div>
+                    <h3>Anonimato Total</h3>
+                    <p>Método 100% anônimo - você não precisa aparecer em vídeos, fotos ou redes sociais.</p>
+                </div>
+            </div>
+            
+            <div class="how-it-works">
+                <h2>Como a Mentoria Funciona</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Onboarding e Configuração</h3>
+                        <p>Configuramos juntos todas as ferramentas e contas necessárias para seu negócio online.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Estratégia de Nicho e Produto</h3>
+                        <p>Definimos o melhor nicho e produto para você vender (próprio ou da nossa curadoria).</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Implementação do Sistema</h3>
+                        <p>Implementamos o sistema completo de IA e tráfego pago para atrair clientes.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Escala e Automação</h3>
+                        <p>Otimizamos e escalamos os resultados, automatizando processos para maximizar lucros.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resultados -->
+    <section id="resultados" class="results">
+        <div class="container">
+            <h2>Resultados Comprovados</h2>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-number">+R$ 8.427</div>
+                    <p>Faturamento médio em 30 dias</p>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">94%</div>
+                    <p>Dos alunos obtêm resultados no primeiro mês</p>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">+347</div>
+                    <p>Alunos transformaram suas vidas</p>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">4.9/5</div>
+                    <p>Avaliação média da mentoria</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mentor -->
+    <section id="mentor" class="mentor">
+        <div class="container">
+            <div class="mentor-content">
+                <div class="mentor-text">
+                    <h2>Conheça Seu Mentor</h2>
+                    <p>Meu nome é <span class="highlight">[SEU NOME]</span>, e há mais de 5 anos trabalho com marketing digital e tráfego pago. Especializei-me em criar sistemas de negócios online que funcionam no piloto automático, especialmente para pessoas que não querem ou não podem aparecer.</p>
+                    <p>Minha missão é democratizar o conhecimento sobre IA e tráfego pago, mostrando que qualquer pessoa, independentemente de sua experiência anterior, pode construir um negócio online lucrativo.</p>
+                    <p>Na mentoria IA Profit, vou te guiar pessoalmente em cada etapa, compartilhando não apenas a teoria, mas as estratégias exatas que uso para gerar resultados consistentes.</p>
+                    
+                    <div class="mentor-stats">
+                        <div class="mentor-stat">
+                            <div class="mentor-stat-number">5+</div>
+                            <div>Anos de Experiência</div>
+                        </div>
+                        <div class="mentor-stat">
+                            <div class="mentor-stat-number">R$ 2,3M+</div>
+                            <div>Em Vendas Online</div>
+                        </div>
+                        <div class="mentor-stat">
+                            <div class="mentor-stat-number">347+</div>
+                            <div>Alunos Mentoriados</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mentor-image">
+                    <div class="mentor-image-placeholder">
+                        <!-- Substitua por sua foto -->
+                        <div>
+                            <i class="fas fa-user-tie" style="font-size: 4rem; margin-bottom: 15px; color: var(--primary);"></i>
+                            <div>Seu Mentor</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investimento -->
+    <section id="investimento">
+        <div class="container">
+            <h2>Faça um Investimento no Seu Futuro</h2>
+            <p class="text-center">Um valor acessível por um método que pode transformar completamente sua situação financeira.</p>
+            
+            <div class="pricing-card">
+                <h3>Mentoria IA Profit</h3>
+                <p>Acesso vitalício ao sistema completo de lucro online com IA</p>
+                
+                <div class="price">R$ 1.497<span class="price-period"> à vista</span></div>
+                <p>ou 12x de R$ 147</p>
+                
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check check-icon"></i> Acesso às ferramentas de IA exclusivas</li>
+                    <li><i class="fas fa-check check-icon"></i> Estratégias de tráfego pago comprovadas</li>
+                    <li><i class="fas fa-check check-icon"></i> Método completo para vender sem aparecer</li>
+                    <li><i class="fas fa-check check-icon"></i> Suporte individual prioritário</li>
+                    <li><i class="fas fa-check check-icon"></i> Comunidade exclusiva de alunos</li>
+                    <li><i class="fas fa-check check-icon"></i> Materiais e atualizações vitalícias</li>
+                    <li><i class="fas fa-check check-icon"></i> Acesso a gravacoes de todas as mentorias</li>
+                </ul>
+                
+                <a href="#cta-final" class="btn btn-primary btn-large">
+                    <i class="fas fa-lock"></i> Quero Garantir Minha Vaga
+                </a>
+                
+                <div class="bonus">
+                    <h4><i class="fas fa-gift"></i> Bônus Exclusivo por Tempo Limitado</h4>
+                    <p>Os primeiros 20 inscritos recebem uma consultoria estratégica individual de 1 hora para acelerar seus resultados + acesso ao módulo avançado de escalabilidade.</p>
+                </div>
+            </div>
+            
+            <div class="money-back">
+                <h3><i class="fas fa-shield-alt"></i> Garantia de 7 Dias</h3>
+                <p>Se em 7 dias você aplicar o método e não ficar completamente satisfeito, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <div class="container">
+            <h2>Perguntas Frequentes</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Preciso ter experiência em marketing digital?</span>
+                        <span><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não! A mentoria é projetada para iniciantes completos. Começamos do zero e te guiamos em cada etapa, desde a configuração das ferramentas até a execução das estratégias.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quanto tempo preciso dedicar por dia?</span>
+                        <span><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Recomendamos de 1 a 2 horas por dia no início. Conforme você automatiza processos com as ferramentas de IA, precisará de menos tempo - eventualmente apenas alguns minutos por dia para monitorar e otimizar.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Posso vender meu próprio produto?</span>
+                        <span><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! O método funciona tanto para produtos próprios quanto para produtos da nossa curadoria. Vamos te ajudar a definir a melhor estratégia baseada no produto que você escolher.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quanto preciso investir em tráfego pago?</span>
+                        <span><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Recomendamos começar com R$ 300-500 para testes iniciais. Conforme os resultados aparecem e você valida o que funciona, pode aumentar progressivamente o investimento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section id="cta-final" class="cta-final">
+        <div class="container">
+            <h2>Transforme Sua Vida Financeira Agora</h2>
+            <p>Não espere mais para começar a lucrar na internet. Junte-se aos mais de 347 alunos que já estão colhendo os frutos do método IA Profit.</p>
+            <a href="#" class="btn btn-primary btn-large">
+                <i class="fas fa-arrow-right"></i> Quero Me Inscrever Agora
+            </a>
+            <p><small><i class="fas fa-exclamation-triangle"></i> Vagas limitadas para garantir atendimento personalizado</small></p>
         </div>
     </section>
 
@@ -542,41 +1133,100 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">ALIANÇA REINANTE</div>
-                <p>© 2023 Aliança Reinante - Todos os direitos reservados</p>
-                <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">
-                    Esta oferta é por tempo limitado e pode ser retirada a qualquer momento
-                </p>
+                <div class="footer-column">
+                    <h3>IA Profit</h3>
+                    <p>Desenvolvendo os melhores profissionais de marketing digital com IA e tráfego pago.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#problema">O Problema</a></li>
+                        <li><a href="#solucao">A Solução</a></li>
+                        <li><a href="#resultados">Resultados</a></li>
+                        <li><a href="#mentor">O Mentor</a></li>
+                        <li><a href="#investimento">Investimento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Suporte</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:contato@iaprofit.com">contato@iaprofit.com</a></li>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 IA Profit. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Efeito de digitação no título
-        const heroTitle = document.querySelector('.hero-title');
-        const text = heroTitle.innerHTML;
-        heroTitle.innerHTML = '';
-        let i = 0;
-        
-        function typeWriter() {
-            if (i < text.length) {
-                heroTitle.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50);
-            }
-        }
-        
-        // Iniciar efeito de digitação quando a página carregar
-        window.addEventListener('load', typeWriter);
+        // Menu mobile
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
 
-        // Smooth Scrolling
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                const icon = question.querySelector('i');
+                
+                item.classList.toggle('active');
+                
+                if (item.classList.contains('active')) {
+                    icon.classList.remove('fa-plus');
+                    icon.classList.add('fa-minus');
+                } else {
+                    icon.classList.remove('fa-minus');
+                    icon.classList.add('fa-plus');
+                }
+            });
+        });
+
+        // Smooth scroll para links internos
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
             });
+        });
+
+        // Efeito de digitação no título
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroTitle = document.querySelector('.hero h1');
+            const text = heroTitle.innerHTML;
+            heroTitle.innerHTML = '';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < text.length) {
+                    heroTitle.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            };
+            
+            setTimeout(typeWriter, 1000);
         });
     </script>
 </body>
