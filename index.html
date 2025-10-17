@@ -3,1231 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentoria IA Profit - Sistema de Lucro Online com IA</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Mentoria - O Ecossistema de Vendas Autônomas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Reset e estilos base */
+        :root {
+            --background: #000000;
+            --surface: #121212;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B3B3B3;
+            --accent: #007BFF; /* Azul Elétrico Moderno */
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', sans-serif;
         }
-        
-        :root {
-            --primary: #6C63FF;
-            --primary-dark: #5A52D5;
-            --accent: #00D4FF;
-            --dark: #0F0F14;
-            --darker: #09090C;
-            --light: #F5F5F7;
-            --text: #E4E4E6;
-            --text-light: #A0A0A5;
-            --card-bg: #1A1A23;
-            --border: #2A2A35;
-        }
-        
+
         body {
-            background-color: var(--darker);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+            font-size: 17px;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
         }
-        
+
         .container {
-            width: 90%;
-            max-width: 1200px;
+            max-width: 650px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 1.5rem;
         }
-        
+
+        /* --- Seções --- */
         section {
-            padding: 100px 0;
+            padding: 4rem 0;
         }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 32px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-align: center;
-            cursor: pointer;
-            font-size: 1rem;
-            border: none;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            box-shadow: 0 4px 20px rgba(108, 99, 255, 0.3);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(108, 99, 255, 0.4);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            color: var(--text);
-            border: 2px solid var(--border);
-        }
-        
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--primary);
-        }
-        
-        .btn-large {
-            padding: 18px 40px;
-            font-size: 1.1rem;
-        }
-        
-        h1, h2, h3, h4 {
-            line-height: 1.2;
-            margin-bottom: 20px;
-            color: var(--light);
-        }
-        
-        h1 {
-            font-size: 3.2rem;
-            font-weight: 700;
-        }
-        
-        h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-        
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 2px;
-        }
-        
-        p {
-            margin-bottom: 20px;
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-        
-        .text-center {
-            text-align: center;
-        }
-        
-        .highlight {
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-        }
-        
-        /* Header */
-        header {
-            background-color: rgba(15, 15, 20, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--light);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .logo-icon {
-            color: var(--primary);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-        
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--light);
-        }
-        
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-        
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text);
-        }
-        
-        /* Hero Section */
+
+        /* --- HERO --- */
         .hero {
-            padding-top: 160px;
-            background: radial-gradient(ellipse at top, var(--dark) 0%, var(--darker) 70%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%231a1a23" points="0,1000 1000,0 1000,1000"/></svg>');
-            background-size: cover;
-            opacity: 0.1;
-            z-index: 0;
-        }
-        
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero-text {
-            flex: 1;
-            padding-right: 50px;
-        }
-        
-        .hero-subtitle {
-            display: inline-block;
-            background: rgba(108, 99, 255, 0.1);
-            color: var(--primary);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            border: 1px solid rgba(108, 99, 255, 0.2);
-        }
-        
-        .hero-image {
-            flex: 1;
             text-align: center;
-            position: relative;
+            padding-top: 3rem;
         }
-        
-        .hero-badge {
-            position: absolute;
-            top: -10px;
-            right: 0;
-            background: var(--accent);
-            color: var(--darker);
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            z-index: 2;
-        }
-        
-        .hero-image-placeholder {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, var(--card-bg), var(--dark));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-light);
-            font-size: 1.2rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-image-placeholder:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(108, 99, 255, 0.1), transparent);
-        }
-        
-        .hero-buttons {
-            margin-top: 40px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        /* Garantia */
-        .guarantee {
-            background-color: var(--card-bg);
-            text-align: center;
-            padding: 40px;
-            border-radius: 12px;
-            margin-top: 60px;
-            border: 1px solid var(--border);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .guarantee-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-        
-        /* Problema Section */
-        .problem {
-            background-color: var(--dark);
-        }
-        
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .problem-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            border: 1px solid var(--border);
-            transition: transform 0.3s ease, border-color 0.3s;
-        }
-        
-        .problem-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-        }
-        
-        .problem-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-        
-        /* Solução Section */
-        .solution-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .feature-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 40px 30px;
-            border: 1px solid var(--border);
-            transition: transform 0.3s ease;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        /* Como Funciona */
-        .steps {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-top: 50px;
-        }
-        
-        .step {
-            flex: 1;
-            min-width: 250px;
-            text-align: center;
-            padding: 0 20px;
-            margin-bottom: 30px;
-            position: relative;
-        }
-        
-        .step:not(:last-child):after {
-            content: '';
-            position: absolute;
-            top: 30px;
-            right: -10px;
-            width: 40px;
-            height: 2px;
-            background: var(--border);
-        }
-        
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 20px;
-            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+            border: 3px solid var(--accent);
+            margin-bottom: 2rem;
         }
-        
-        /* Resultados */
-        .results {
-            background-color: var(--dark);
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
         }
-        
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .result-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 40px 30px;
-            text-align: center;
-            border: 1px solid var(--border);
-        }
-        
-        .result-number {
-            font-size: 3rem;
-            font-weight: bold;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
-        
-        /* Mentor */
-        .mentor {
-            background: radial-gradient(ellipse at bottom, var(--dark) 0%, var(--darker) 70%);
-        }
-        
-        .mentor-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .mentor-text {
-            flex: 1;
-            padding-right: 50px;
-        }
-        
-        .mentor-image {
-            flex: 1;
-            text-align: center;
-        }
-        
-        .mentor-image-placeholder {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--card-bg), var(--dark));
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-light);
-            font-size: 1.2rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .mentor-image-placeholder:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(108, 99, 255, 0.1), transparent);
-        }
-        
-        .mentor-stats {
-            display: flex;
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .mentor-stat {
-            text-align: center;
-        }
-        
-        .mentor-stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        /* Investimento */
-        .pricing-card {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 50px 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            position: relative;
-            max-width: 600px;
-            margin: 0 auto;
-            border: 1px solid var(--border);
-            overflow: hidden;
-        }
-        
-        .pricing-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-        
-        .price {
-            font-size: 3.5rem;
-            font-weight: bold;
-            color: var(--light);
-            margin: 20px 0;
-        }
-        
-        .price-period {
-            color: var(--text-light);
-            font-size: 1rem;
-        }
-        
-        .pricing-features {
-            list-style: none;
-            margin: 40px 0;
-            text-align: left;
-        }
-        
-        .pricing-features li {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-        }
-        
-        .pricing-features li:last-child {
-            border-bottom: none;
-        }
-        
-        .check-icon {
-            color: var(--accent);
-            margin-right: 15px;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        
-        .bonus {
-            background: rgba(0, 212, 255, 0.1);
-            border-radius: 12px;
-            padding: 25px;
-            margin-top: 30px;
-            text-align: left;
-            border: 1px solid rgba(0, 212, 255, 0.2);
-        }
-        
-        .bonus h4 {
-            color: var(--accent);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        /* Garantia */
-        .money-back {
-            text-align: center;
-            margin-top: 40px;
-            padding: 30px;
-            background: rgba(108, 99, 255, 0.1);
-            border-radius: 12px;
-            border: 1px solid rgba(108, 99, 255, 0.2);
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* FAQ */
-        .faq-item {
-            margin-bottom: 20px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 25px;
-            background-color: var(--card-bg);
-            transition: border-color 0.3s;
-        }
-        
-        .faq-item:hover {
-            border-color: var(--primary);
-        }
-        
-        .faq-question {
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+
+        .hero p {
             font-size: 1.1rem;
-            color: var(--light);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--text-primary);
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            background-color: #0056b3;
         }
         
-        .faq-answer {
-            margin-top: 15px;
-            display: none;
+        .cta-subtext {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
-        
-        .faq-item.active .faq-answer {
-            display: block;
+
+        /* --- Estrutura de Conteúdo --- */
+        .content-section {
+            border-top: 1px solid #222;
         }
-        
-        /* CTA Final */
-        .cta-final {
-            background: radial-gradient(ellipse at top, var(--dark) 0%, var(--darker) 70%);
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
             text-align: center;
-            padding: 120px 0;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 3rem;
         }
         
-        .cta-final:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%231a1a23" points="0,0 1000,1000 0,1000"/></svg>');
-            background-size: cover;
-            opacity: 0.1;
-            z-index: 0;
-        }
-        
-        .cta-final .container {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .cta-final h2 {
-            color: var(--light);
-        }
-        
-        .cta-final p {
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--darker);
-            padding: 80px 0 30px;
-            border-top: 1px solid var(--border);
-        }
-        
-        .footer-content {
+        .section-title span { color: var(--accent); }
+
+        /* --- Cards --- */
+        .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 1.5rem;
         }
-        
-        .footer-column h3 {
-            color: var(--light);
-            margin-bottom: 20px;
+
+        .card {
+            background-color: var(--surface);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #222;
+        }
+
+        .card h3 {
             font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .card p {
+            color: var(--text-secondary);
         }
         
-        .footer-links {
+        /* --- Lista "Para Quem É" --- */
+        .target-list {
             list-style: none;
         }
-        
-        .footer-links li {
-            margin-bottom: 10px;
+        .target-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 1rem;
         }
-        
-        .footer-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s;
+        .target-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
         }
-        
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: var(--card-bg);
-            border-radius: 50%;
-            color: var(--text);
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
+
+        /* --- Oferta Final --- */
+        .offer-box {
+            background-color: var(--surface);
+            padding: 2.5rem;
+            border-radius: 16px;
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid var(--border);
-            color: var(--text-light);
+        }
+        .offer-box .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
             font-size: 0.9rem;
+            color: var(--text-secondary);
+            border-top: 1px solid #222;
         }
-        
-        /* Responsive */
-        @media (max-width: 992px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-            
-            .hero-content, .mentor-content {
-                flex-direction: column;
-            }
-            
-            .hero-text, .mentor-text {
-                padding-right: 0;
-                margin-bottom: 50px;
-                text-align: center;
-            }
-            
-            .step:not(:last-child):after {
-                display: none;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .hero {
-                padding-top: 130px;
-            }
-            
-            section {
-                padding: 80px 0;
-            }
-            
-            .steps {
-                flex-direction: column;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            .mentor-stats {
-                justify-content: center;
-            }
-        }
+
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
+
+    <header class="hero">
         <div class="container">
-            <nav class="navbar">
-                <a href="#" class="logo">
-                    <i class="fas fa-brain logo-icon"></i>
-                    IA Profit
-                </a>
-                <ul class="nav-links">
-                    <li><a href="#problema">O Problema</a></li>
-                    <li><a href="#solucao">A Solução</a></li>
-                    <li><a href="#resultados">Resultados</a></li>
-                    <li><a href="#mentor">O Mentor</a></li>
-                    <li><a href="#investimento">Investimento</a></li>
-                </ul>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
+            <img src="https://i.imgur.com/YQ40iIZ.jpg" alt="Seu Mentor" class="profile-img">
+            <h1>O Ecossistema de Vendas Autônomas</h1>
+            <p>Aprenda a construir um sistema que vende por você todos os dias, sem precisar aparecer e sem investir em anúncios.</p>
+            <a href="#link-checkout" class="cta-button">QUERO ACESSO AO ECOSSISTEMA</a>
+            <p class="cta-subtext">Vagas limitadas. Acesso imediato.</p>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div class="hero-subtitle">
-                        <i class="fas fa-rocket"></i> MENTORIA EXCLUSIVA
+    <main>
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">O marketing digital tradicional <span>quebrou.</span></h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>Alta Competição</h3>
+                        <p>Lutar por atenção nas redes sociais está cada vez mais caro e cansativo. É um oceano vermelho de conteúdo.</p>
                     </div>
-                    <h1>Domine o Sistema de Lucro Onlinecom IA e Tráfego Pago</h1>
-                    <p>Aprenda o método passo a passo para criar um negócio digital lucrativo, mesmo que você não queira aparecer e não tenha experiência anterior.</p>
-                    <div class="hero-buttons">
-                        <a href="#investimento" class="btn btn-primary btn-large">
-                            <i class="fas fa-arrow-right"></i> Quero Me Inscrever Agora
-                        </a>
-                        <a href="#solucao" class="btn btn-outline">
-                            <i class="fas fa-play-circle"></i> Ver Método
-                        </a>
+                    <div class="card">
+                        <h3>Dependência de Imagem</h3>
+                        <p>Você se torna um escravo da sua própria imagem, precisando "aparecer" todos os dias para manter as vendas.</p>
                     </div>
-                </div>
-                <div class="hero-image">
-                    <div class="hero-badge">
-                        <i class="fas fa-bolt"></i> VAGAS LIMITADAS
-                    </div>
-                    <div class="hero-image-placeholder">
-                        <!-- Substitua por uma imagem real -->
-                        <div>
-                            <i class="fas fa-chart-line" style="font-size: 3rem; margin-bottom: 15px; color: var(--primary);"></i>
-                            <div>Dashboard de Resultados</div>
-                        </div>
+                     <div class="card">
+                        <h3>Sistemas Frágeis</h3>
+                        <p>Sua renda depende de uma única fonte de tráfego, que pode mudar as regras do jogo a qualquer momento e te deixar na mão.</p>
                     </div>
                 </div>
             </div>
-            
-            <div class="guarantee">
-                <div class="guarantee-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Garantia Incondicional de 7 Dias</h3>
-                <p>Se você aplicar o método e não ver resultados, devolvemos 100% do seu investimento sem burocracia.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Problema -->
-    <section id="problema" class="problem">
-        <div class="container">
-            <h2>Você Se Identifica Com Algum Desses Problemas?</h2>
-            <div class="problem-grid">
-                <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-times-circle"></i>
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">O que você vai construir aqui dentro:</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>✔️ Estratégia e Mapeamento</h3>
+                        <p>O blueprint completo do sistema. Você terá clareza total sobre cada etapa para construir sua operação do zero.</p>
                     </div>
-                    <h3>Falta de Conhecimento Técnico</h3>
-                    <p>Não sabe como usar ferramentas de IA ou configurar campanhas de tráfego pago que convertem.</p>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-user-secret"></i>
+                    <div class="card">
+                        <h3>✔️ Ferramentas de Automação</h3>
+                        <p>Acesso ao nosso arsenal de ferramentas (muitas gratuitas) para automatizar 90% do trabalho manual e repetitivo.</p>
                     </div>
-                    <h3>Medo de Se Expor</h3>
-                    <p>Não quer aparecer em vídeos ou redes sociais, mas acha que é obrigatório para ter sucesso online.</p>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-clock"></i>
+                    <div class="card">
+                        <h3>✔️ Fontes de Tráfego Orgânico</h3>
+                        <p>Aprenda a gerar um fluxo constante de clientes qualificados sem depender de anúncios pagos.</p>
                     </div>
-                    <h3>Falta de Tempo</h3>
-                    <p>Tem um trabalho ou compromissos e não pode dedicar horas intermináveis a um novo negócio.</p>
+                    <div class="card">
+                        <h3>✔️ Inteligência Artificial Aplicada</h3>
+                        <p>Configure assistentes de I.A. para lidar com o atendimento e qualificação, permitindo que você foque apenas no estratégico.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+        
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">Este ecossistema foi desenhado <span>para você?</span></h2>
+                <div class="card">
+                    <h3>Para quem está começando do zero:</h3>
+                    <ul class="target-list">
+                        <li>Um caminho claro e passo a passo para construir sua primeira fonte de renda online de forma sólida.</li>
+                        <li>Aprenda um método que não exige investimento inicial em tráfego.</li>
+                    </ul>
+                </div>
+                <div class="card" style="margin-top: 1.5rem;">
+                    <h3>Para quem já vende online:</h3>
+                     <ul class="target-list">
+                        <li>Crie um novo braço de vendas para seu negócio que opera de forma independente e automática.</li>
+                        <li>Saia da dependência de anúncios e da necessidade de exposição constante.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-    <!-- Solução -->
-    <section id="solucao">
-        <div class="container">
-            <h2>A Solução: Mentoria <span class="highlight">IA Profit</span></h2>
-            <p class="text-center">Um sistema completo e comprovado para criar um negócio online lucrativo usando inteligência artificial e tráfego pago estratégico.</p>
-            
-            <div class="solution-features">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Ferramentas de IA Exclusivas</h3>
-                    <p>Acesso a ferramentas de inteligência artificial que automatizam a criação de conteúdo e gestão de campanhas.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Tráfego Pago que Converte</h3>
-                    <p>Estratégias de tráfego pago testadas e validadas que geram resultados rápidos e consistentes.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-ninja"></i>
-                    </div>
-                    <h3>Anonimato Total</h3>
-                    <p>Método 100% anônimo - você não precisa aparecer em vídeos, fotos ou redes sociais.</p>
+        <section class="content-section">
+            <div class="container">
+                <div class="offer-box">
+                    <h2 class="section-title">Seu acesso à <span>inteligência</span> em vendas.</h2>
+                    <p>Acesso vitalício a todo o ecossistema e futuras atualizações.</p>
+                    <div class="price">[VALOR DA MENTORIA]</div>
+                    <p>Garantia incondicional de 7 dias. O risco é 100% meu.</p>
+                    <a href="#link-checkout" class="cta-button" style="margin-top: 1.5rem;">GARANTIR MINHA VAGA AGORA</a>
                 </div>
             </div>
-            
-            <div class="how-it-works">
-                <h2>Como a Mentoria Funciona</h2>
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <h3>Onboarding e Configuração</h3>
-                        <p>Configuramos juntos todas as ferramentas e contas necessárias para seu negócio online.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <h3>Estratégia de Nicho e Produto</h3>
-                        <p>Definimos o melhor nicho e produto para você vender (próprio ou da nossa curadoria).</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <h3>Implementação do Sistema</h3>
-                        <p>Implementamos o sistema completo de IA e tráfego pago para atrair clientes.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <h3>Escala e Automação</h3>
-                        <p>Otimizamos e escalamos os resultados, automatizando processos para maximizar lucros.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resultados -->
-    <section id="resultados" class="results">
-        <div class="container">
-            <h2>Resultados Comprovados</h2>
-            <div class="results-grid">
-                <div class="result-card">
-                    <div class="result-number">+R$ 8.427</div>
-                    <p>Faturamento médio em 30 dias</p>
-                </div>
-                <div class="result-card">
-                    <div class="result-number">94%</div>
-                    <p>Dos alunos obtêm resultados no primeiro mês</p>
-                </div>
-                <div class="result-card">
-                    <div class="result-number">+347</div>
-                    <p>Alunos transformaram suas vidas</p>
-                </div>
-                <div class="result-card">
-                    <div class="result-number">4.9/5</div>
-                    <p>Avaliação média da mentoria</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mentor -->
-    <section id="mentor" class="mentor">
-        <div class="container">
-            <div class="mentor-content">
-                <div class="mentor-text">
-                    <h2>Conheça Seu Mentor</h2>
-                    <p>Meu nome é <span class="highlight">[SEU NOME]</span>, e há mais de 5 anos trabalho com marketing digital e tráfego pago. Especializei-me em criar sistemas de negócios online que funcionam no piloto automático, especialmente para pessoas que não querem ou não podem aparecer.</p>
-                    <p>Minha missão é democratizar o conhecimento sobre IA e tráfego pago, mostrando que qualquer pessoa, independentemente de sua experiência anterior, pode construir um negócio online lucrativo.</p>
-                    <p>Na mentoria IA Profit, vou te guiar pessoalmente em cada etapa, compartilhando não apenas a teoria, mas as estratégias exatas que uso para gerar resultados consistentes.</p>
-                    
-                    <div class="mentor-stats">
-                        <div class="mentor-stat">
-                            <div class="mentor-stat-number">5+</div>
-                            <div>Anos de Experiência</div>
-                        </div>
-                        <div class="mentor-stat">
-                            <div class="mentor-stat-number">R$ 2,3M+</div>
-                            <div>Em Vendas Online</div>
-                        </div>
-                        <div class="mentor-stat">
-                            <div class="mentor-stat-number">347+</div>
-                            <div>Alunos Mentoriados</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mentor-image">
-                    <div class="mentor-image-placeholder">
-                        <!-- Substitua por sua foto -->
-                        <div>
-                            <i class="fas fa-user-tie" style="font-size: 4rem; margin-bottom: 15px; color: var(--primary);"></i>
-                            <div>https://imgur.com/YQ40iIZ.jpg</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Investimento -->
-    <section id="investimento">
-        <div class="container">
-            <h2>Faça um Investimento no Seu Futuro</h2>
-            <p class="text-center">Um valor acessível por um método que pode transformar completamente sua situação financeira.</p>
-            
-            <div class="pricing-card">
-                <h3>Mentoria IA Profit</h3>
-                <p>Acesso vitalício ao sistema completo de lucro online com IA</p>
-                
-                <div class="price">R$ 1.497<span class="price-period"> à vista</span></div>
-                <p>ou 12x de R$ 147</p>
-                
-                <ul class="pricing-features">
-                    <li><i class="fas fa-check check-icon"></i> Acesso às ferramentas de IA exclusivas</li>
-                    <li><i class="fas fa-check check-icon"></i> Estratégias de tráfego pago comprovadas</li>
-                    <li><i class="fas fa-check check-icon"></i> Método completo para vender sem aparecer</li>
-                    <li><i class="fas fa-check check-icon"></i> Suporte individual prioritário</li>
-                    <li><i class="fas fa-check check-icon"></i> Comunidade exclusiva de alunos</li>
-                    <li><i class="fas fa-check check-icon"></i> Materiais e atualizações vitalícias</li>
-                    <li><i class="fas fa-check check-icon"></i> Acesso a gravacoes de todas as mentorias</li>
-                </ul>
-                
-                <a href="#cta-final" class="btn btn-primary btn-large">
-                    <i class="fas fa-lock"></i> Quero Garantir Minha Vaga
-                </a>
-                
-                <div class="bonus">
-                    <h4><i class="fas fa-gift"></i> Bônus Exclusivo por Tempo Limitado</h4>
-                    <p>Os primeiros 20 inscritos recebem uma consultoria estratégica individual de 1 hora para acelerar seus resultados + acesso ao módulo avançado de escalabilidade.</p>
-                </div>
-            </div>
-            
-            <div class="money-back">
-                <h3><i class="fas fa-shield-alt"></i> Garantia de 7 Dias</h3>
-                <p>Se em 7 dias você aplicar o método e não ficar completamente satisfeito, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq">
-        <div class="container">
-            <h2>Perguntas Frequentes</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Preciso ter experiência em marketing digital?</span>
-                        <span><i class="fas fa-plus"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Não! A mentoria é projetada para iniciantes completos. Começamos do zero e te guiamos em cada etapa, desde a configuração das ferramentas até a execução das estratégias.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Quanto tempo preciso dedicar por dia?</span>
-                        <span><i class="fas fa-plus"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Recomendamos de 1 a 2 horas por dia no início. Conforme você automatiza processos com as ferramentas de IA, precisará de menos tempo - eventualmente apenas alguns minutos por dia para monitorar e otimizar.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Posso vender meu próprio produto?</span>
-                        <span><i class="fas fa-plus"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sim! O método funciona tanto para produtos próprios quanto para produtos da nossa curadoria. Vamos te ajudar a definir a melhor estratégia baseada no produto que você escolher.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Quanto preciso investir em tráfego pago?</span>
-                        <span><i class="fas fa-plus"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Recomendamos começar com R$ 300-500 para testes iniciais. Conforme os resultados aparecem e você valida o que funciona, pode aumentar progressivamente o investimento.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Final -->
-    <section id="cta-final" class="cta-final">
-        <div class="container">
-            <h2>Transforme Sua Vida Financeira Agora</h2>
-            <p>Não espere mais para começar a lucrar na internet. Junte-se aos mais de 347 alunos que já estão colhendo os frutos do método IA Profit.</p>
-            <a href="#" class="btn btn-primary btn-large">
-                <i class="fas fa-arrow-right"></i> Quero Me Inscrever Agora
-            </a>
-            <p><small><i class="fas fa-exclamation-triangle"></i> Vagas limitadas para garantir atendimento personalizado</small></p>
-        </div>
-    </section>
-
-    <!-- Footer -->
+        </section>
+    </main>
+    
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>IA Profit</h3>
-                    <p>Desenvolvendo os melhores profissionais de marketing digital com IA e tráfego pago.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Links Rápidos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#problema">O Problema</a></li>
-                        <li><a href="#solucao">A Solução</a></li>
-                        <li><a href="#resultados">Resultados</a></li>
-                        <li><a href="#mentor">O Mentor</a></li>
-                        <li><a href="#investimento">Investimento</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Suporte</h3>
-                    <ul class="footer-links">
-                        <li><a href="mailto:contato@iaprofit.com">contato@iaprofit.com</a></li>
-                        <li><a href="#">Central de Ajuda</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                        <li><a href="#">Termos de Uso</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2023 IA Profit. Todos os direitos reservados.</p>
-            </div>
+            <p>&copy; 2025 [SEU NOME/SUA EMPRESA] - Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <script>
-        // Menu mobile
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-
-        // FAQ accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentNode;
-                const icon = question.querySelector('i');
-                
-                item.classList.toggle('active');
-                
-                if (item.classList.contains('active')) {
-                    icon.classList.remove('fa-plus');
-                    icon.classList.add('fa-minus');
-                } else {
-                    icon.classList.remove('fa-minus');
-                    icon.classList.add('fa-plus');
-                }
-            });
-        });
-
-        // Smooth scroll para links internos
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Efeito de digitação no título
-        document.addEventListener('DOMContentLoaded', function() {
-            const heroTitle = document.querySelector('.hero h1');
-            const text = heroTitle.innerHTML;
-            heroTitle.innerHTML = '';
-            
-            let i = 0;
-            const typeWriter = () => {
-                if (i < text.length) {
-                    heroTitle.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 50);
-                }
-            };
-            
-            setTimeout(typeWriter, 1000);
-        });
-    </script>
 </body>
 </html>
