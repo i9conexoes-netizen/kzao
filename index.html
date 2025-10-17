@@ -100,6 +100,7 @@
         .typing-container {
             position: relative;
             display: inline-block;
+            max-width: 100%;
         }
 
         .typing-text {
@@ -108,8 +109,10 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             border-right: 3px solid var(--accent);
-            white-space: nowrap;
-            overflow: hidden;
+            white-space: normal;
+            overflow: visible;
+            word-wrap: break-word;
+            text-align: center;
             animation: blink-caret 0.75s step-end infinite;
         }
 
@@ -424,6 +427,17 @@
             .cta-button {
                 padding: 16px 28px;
                 font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero h1 {
+                font-size: 1.5rem;
+                min-height: 90px;
+            }
+            
+            .typing-text {
+                font-size: 1.5rem;
             }
         }
     </style>
