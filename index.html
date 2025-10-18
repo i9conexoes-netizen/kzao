@@ -23,6 +23,8 @@
             --accent: #007BFF;
             --accent-hover: #0056b3;
             --accent-glow: rgba(0, 123, 255, 0.4);
+            --success: #28a745;
+            --success-glow: rgba(40, 167, 69, 0.4);
         }
 
         * {
@@ -329,12 +331,29 @@
             z-index: 1;
         }
 
+        .pricing-container {
+            margin: 2rem 0;
+        }
+
+        .original-price {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+            margin-bottom: 0.5rem;
+        }
+
         .offer-box .price {
             font-size: 3.5rem;
             font-weight: 700;
-            color: var(--accent);
-            margin: 1.5rem 0;
-            text-shadow: 0 0 10px var(--accent-glow);
+            color: var(--success);
+            text-shadow: 0 0 10px var(--success-glow);
+            margin-bottom: 0.5rem;
+        }
+
+        .installments {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
         }
 
         /* --- Footer --- */
@@ -415,8 +434,16 @@
                 padding: 2.5rem 1.5rem;
             }
 
+            .original-price {
+                font-size: 1.5rem;
+            }
+
             .offer-box .price {
                 font-size: 2.8rem;
+            }
+
+            .installments {
+                font-size: 1.1rem;
             }
         }
 
@@ -459,7 +486,7 @@
                 </div>
             </h1>
             <p class="fade-in delay-2">Aprenda a construir um sistema que vende por você todos os dias, sem precisar aparecer e sem investir em anúncios.</p>
-            <a href="#link-checkout" class="cta-button fade-in delay-3">QUERO ACESSO AO ECOSSISTEMA</a>
+            <a href="#offer" class="cta-button fade-in delay-3">QUERO ACESSO AO ECOSSISTEMA</a>
             <p class="cta-subtext fade-in delay-3">Vagas limitadas. Acesso imediato.</p>
         </div>
     </header>
@@ -529,12 +556,16 @@
             </div>
         </section>
 
-        <section class="content-section">
+        <section id="offer" class="content-section">
             <div class="container">
                 <div class="offer-box fade-in">
                     <h2 class="section-title">Seu acesso à <span>inteligência</span> em vendas.</h2>
                     <p>Acesso vitalício a todo o ecossistema e futuras atualizações.</p>
-                    <div class="price">147,80</div>
+                    <div class="pricing-container">
+                        <div class="original-price">De R$ 1.247,00</div>
+                        <div class="price">R$ 147,80</div>
+                        <div class="installments">ou 12x de R$ 14,75</div>
+                    </div>
                     <p>Garantia incondicional de 7 dias. O risco é 100% meu.</p>
                     <a href="#link-checkout" class="cta-button" style="margin-top: 2rem;">GARANTIR MINHA VAGA AGORA</a>
                 </div>
@@ -584,6 +615,14 @@
                 el.style.transform = 'translateY(20px)';
                 el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
                 fadeObserver.observe(el);
+            });
+
+            // Scroll suave para a seção de oferta quando clicar no botão do hero
+            document.querySelector('a[href="#offer"]').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('#offer').scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
